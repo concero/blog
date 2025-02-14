@@ -15,7 +15,7 @@ module.exports = {
               code: { color: theme('--color-primary-400') },
             },
             'h1,h2': {
-              fontWeight: '700',
+              fontWeight: '600',
               letterSpacing: theme('--tracking-tight'),
             },
             h3: {
@@ -29,7 +29,7 @@ module.exports = {
         invert: {
           css: {
             a: {
-              color: theme('--color-pink-500'),
+              color: theme('--color-primary-500'),
               '&:hover': {
                 color: theme('--color-primary-400'),
               },
