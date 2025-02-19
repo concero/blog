@@ -1,0 +1,84 @@
+---
+title: 'Understanding Concero: The Future of Cross-Chain Infrastructure'
+date: '2025-01-14'
+lastmod: '2025-01-14'
+tags: ['concero', 'article', 'concero-v1']
+draft: false
+summary: 'Concero is a cross-chain infrastructure provider that enables seamless interoperability between different blockchain networks.'
+authors: ['phuc']
+---
+
+![Article banner](/static/images/concero/article/understanding-concero-future-cross-chain/banner.webp)
+
+## Understanding the imperative for blockchain interoperability
+
+Blockchains are decentralised computer networks that record account balances and data on a digital ledger. Over time, blockchain technology has proven its value across various industries, particularly in finance. It decentralises systems, enhances security and transparency, enables traceability, increases efficiency and speed, and significantly reduces operational costs and fees.
+
+Recognising these invaluable advantages and the potential to be part of one of the most significant financial transformations of our time, many companies have developed diverse blockchain technologies. These are designed not only for general purposes but also tailored for specific use cases to meet market demands.
+
+The adoption of blockchain technology extends beyond technology companies to include major financial institutions and banks, who are emerging as leaders in the capital markets' digital transformation. These institutions are not merely implementing existing blockchain solutions; instead, they are developing custom blockchain networks specifically designed to integrate with their established infrastructure.
+
+This approach suggests a future where thousands of purpose-built blockchains will emerge, created by companies across various industries and countries. This proliferation of custom blockchain networks highlights a critical challenge: **the need for effective interoperability solutions to enable seamless communication and value transfer between these diverse blockchain ecosystems, make them unified as a whole (Figure 1).**
+
+![Figure 1](/static/images/concero/article/understanding-concero-future-cross-chain/fig1.webp)
+**Figure 1.** How cross-chain interoperability solutions transform Isolated Blockchain Networks to Unified Blockchain Ecosystem
+
+Blockchain networks, by their fundamental design, operate as isolated digital environments, only maintaining records of internal transactions and states without direct knowledge of external events or data. This limitation, known as the oracle problem, requires external data feeds to keep blockchain networks updated with real-world information. This isolation can be analogous to a closed nation-state: just as a country without international connections may struggle to access modern technologies and innovations, an isolated blockchain network's utility is similarly constrained.
+
+The value of blockchain technology significantly increases when networks can securely communicate and transfer assets between one another. This interoperability transforms isolated blockchain networks into interconnected systems, enabling more complex applications and broader adoption of blockchain technology. Just as international trade and communication drive global economic growth, blockchain interoperability is crucial for realising the full potential of distributed ledger technologies.
+
+## Cross-chain bridge market: From current usage patterns to future growth prospects
+
+The blockchain landscape is experiencing significant cross-chain activity, with daily volumes reaching \$491.18M and monthly volumes of \$18B across various networks (Fig.2A — data taken on 09/01/2025). An analysis of cross-chain movement reveals a clear trend where users are actively migrating assets between networks, particularly from Ethereum mainnet to Layer 2 solutions like Arbitrum (\$844.24M inflow) and Base (\$191.89M inflow). This migration pattern reflects users' growing demand for scalable and cost-effective blockchain solutions.
+
+![Figure 2](/static/images/concero/article/understanding-concero-future-cross-chain/fig2.webp)
+**Figure 2.** Monthly out/inflow between chains and Top 15 bridges by highest volume
+
+According to Research Nester's market analysis, this trend is just the beginning of a larger shift in the blockchain industry. The blockchain interoperability market, valued at \$375 million in 2024, is projected to reach \$8.5 billion by 2037, growing at a compound annual growth rate (CAGR) of 27% from 2025 to 2036. This remarkable growth forecast is supported by current market data showing increasing cross-chain activities, and is expected to accelerate further as traditional capital market players enter the DeFi ecosystem, driving demand for seamless communication and asset transfer between different blockchain networks.
+
+The transaction data also reveals distinct patterns in how users interact with different bridge protocols, highlighting the diverse needs of the blockchain ecosystem (Figure 2.B). Among the bridges, Stargate leads in terms of transactions, followed by Across and Orbiter Finance. Interestingly, established protocols like Arbitrum Bridge and Base Bridge show much lower transaction, suggesting that user experience and accessibility drive transaction volume more than brand recognition.
+
+This pattern becomes clearer when analysing the relationship between transaction counts and volume. For example, Across processes a relatively lower volume (\$54.19M) through many small transactions, making it popular for retail users making frequent transfers. In contrast, Wormhole handles a similar volume (\$55.53M) but through only 18,742 transactions, indicating its preference among institutional users for larger value transfers.
+
+This market segmentation, where different bridges serve distinct user needs, is truly crucial for the broader adoption of blockchain technology. As more specialised solutions emerge, developers gain access to better tools for building user-friendly applications, ultimately making blockchain technology more accessible to everyday users who may have zero knowledge about the underlying technology.
+
+While the blockchain interoperability market shows tremendous growth potential, current solutions face significant challenges in meeting user needs. The increasing transaction volumes across different bridges highlight varying user preferences and requirements, yet no single solution has successfully addressed all these needs simultaneously.
+
+This fragmentation in the market, where users must choose between speed, security, or ease of use, creates an opportunity for innovation. It is within this context that Concero's development journey began, driven by a mission to create a comprehensive solution that could serve all user segments without compromise.
+
+## The birth of Concero
+
+The birth of Concero emerged from extensive research and real-world testing of cross-chain aggregation solutions. The development team began by building and iterating various cross-chain minimum viable products (MVPs), focusing on understanding fundamental user requirements.
+
+Through thousands of survey results and usage data points, the founder team identified three critical attributes that users consistently demanded:
+
+1. Speed,
+2. Security, and
+3. Ease of Use.
+
+![Figure 3](/static/images/concero/article/understanding-concero-future-cross-chain/fig3.webp)
+**Figure 3.** The Cross-chain bridge trilemma
+
+Our team realised that existing cross-chain solutions often faced a fundamental dilemma. To achieve faster transaction speeds, many protocols compromise security or decentralisation. This trade-off was particularly concerning given that approximately 40% of all assets lost due to hacks were from bridge exploits, highlighting the critical importance of maintaining robust security measures. Similarly, solutions prioritising security often resulted in slower transaction times, creating a poor user experience with waiting periods extending to 30 minutes or more. Another significant finding was that 30% of abandoned cross-chain transactions occurred due to users lacking gas tokens on destination chains. This obstacle highlighted the need for gas abstraction — allowing users to pay fees using their source chain tokens without maintaining multiple native tokens across different networks. After evaluating the existing infrastructure and finding no solution that could satisfy all three requirements while maintaining full decentralisation, the team laid the foundation for Concero. The protocol was designed to leverage Chainlink's Cross-Chain Interoperability Protocol (CCIP) as its settlement layer and Chainlink Functions as its execution layer, ensuring both security and speed without compromising decentralisation. This architectural choice avoided the common “chicken-and-egg” problem faced by new protocols that need both volume and node operators simultaneously, allowing Concero to focus on building a robust and user-friendly solution that truly addresses market needs.
+
+## Understanding Concero
+
+Concero is a fully decentralised cross-blockchain protocol that enables secure value and message transfers between different blockchain networks in under a minute. At its core, Concero's architecture consists of three distinct layers that work in harmony to achieve fast, secure, and user-friendly cross-chain communication.
+
+The Top Layer serves as the entry point where all user intents are collected through the protocol's SDK, API, and applications. The Execution Layer houses the orchestrator contracts and liquidity pools, while the Settlement Layer handles transaction finalisation and system-wide liquidity rebalancing (Figure 4).
+
+![Figure 4](/static/images/concero/article/understanding-concero-future-cross-chain/fig4.webp)
+**Figure 4.** Concero's three-layer architecture
+
+The protocol offers four key functionalities that address the fundamental challenges in cross-chain communication.
+
+- First, its value transfer system employs an intent-based approach with optimistic execution, allowing users to move assets between blockchains quickly.
+- Second, the messaging functionality enables secure communication between blockchains through a decentralised compute verification system.
+- Third, gas abstraction allows users to pay destination chain fees using their source chain tokens, eliminating the need to hold multiple native tokens across different networks.
+- Fourth, single-chain execution enables users to perform complex multi-step transactions with a single signature.
+
+Concero achieves its security and speed through strategic infrastructure choices. Instead of building a new network from scratch, the protocol leverages Chainlink’s Cross-Chain Interoperability Protocol (CCIP) as its settlement layer and Chainlink Functions as its execution layer for Concero V1. This approach utilises established and secure infrastructure while avoiding the common challenge of needing both liquidity and node operators simultaneously.
+
+For developers building cross-chain applications, Concero provides a comprehensive toolkit that abstracts away the complexities of blockchain interoperability. This enables developers to focus on building user-friendly applications without worrying about the underlying mechanisms of cross-chain communication, ultimately contributing to the broader adoption of blockchain technology.
+
+For research collaboration: Please feel free to reach me at [phuc@concero.io] or X [[@phuchoanglevn](https://x.com/phuchoanglevn)]
