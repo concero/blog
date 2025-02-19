@@ -1,7 +1,9 @@
 {
-  "concero": 2,
-  "partnership": 2,
-  "announcement": 2,
+  "concero": 4,
+  "partnership": 3,
+  "announcement": 3,
+  "article": 1,
+  "concero-v1": 1,
   "next-js": 6,
   "tailwind": 3,
   "guide": 5,
