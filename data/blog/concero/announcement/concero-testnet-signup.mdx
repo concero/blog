@@ -1,0 +1,71 @@
+---
+title: 'Concero Testnet Signup'
+date: '2024-03-26'
+lastmod: '2024-03-26'
+tags: ['concero', 'announcement', 'testnet']
+draft: false
+summary: 'Concero Testnet Signup'
+images: ['/static/images/concero/announcement/concero-testnet-signup/banner.webp']
+authors: ['concero']
+layout: 'PostBanner'
+---
+
+## Introduction
+
+Concero is developing an abstracted interoperability platform for future cross-chain applications. A decentralised infrastructure which enables cross-chain transactions in under a minute without compromising security. With gas abstraction, routing, and aggregation, Concero provides developers with essential tools for building secure, fast, and user-friendly cross-chain apps. Offering an unmatched tradeoff between speed and security, surpassing competitors. With a fully decentralised infrastructure, Concero stands out as the only truly decentralised stack for development.
+
+## What Are We Building?
+
+![Concero Testnet Signup](/static/images/concero/announcement/concero-testnet-signup/fig1.webp)
+
+Concero is building an abstracted interoperability protocol for the next-gen dApps, as part of the Chainlink Build Programme. By leveraging CCIP, Automations, and Functions we offer swift, secure, and user-friendly cross-chain infrastructure. Abstracting the complexities of cross-chain interoperability, Concero achieves transactions in under a minute with no security compromises and just a single click. Unlike competitors, our infrastructure lacks centralization, making Concero the sole truly decentralised interoperability platform shaping the future of cross-chain.
+
+## Why are we building this?
+
+![Concero Testnet Signup](/static/images/concero/announcement/concero-testnet-signup/fig2.webp)
+
+In today's rapidly evolving industry, with the rise of Layer 2 solutions, we're witnessing the dawn of a truly multi-chain era. It's more crucial than ever to establish a fully decentralised infrastructure to underpin the next generation of apps. Currently, many solutions prioritise speed over security and decentralisation, which is a potential disaster waiting to happen. Remember the collapse of FTX? It's a stark reminder of what happens when we overlook these principles.
+
+At Concero, we've taken a different approach. We're crafting a brand-new infrastructure that delivers the speed users demand without compromising on security or decentralisation. Through techniques like gas abstraction, aggregation, and multi-step execution, Concero aims to provide the most robust foundation for any cross-chain application.
+
+Decentralisation is at the core of our infrastructure design philosophy. We've meticulously engineered the most decentralised method to facilitate cross-chain transactions, ensuring reliability and trustworthiness.
+
+## How does it work?
+
+![Concero Testnet Signup](/static/images/concero/announcement/concero-testnet-signup/fig3.webp)
+
+At Concero, we operate based on user intents, utilising our infrastructure solely to facilitate transactions in the most decentralised manner. We never store, lend, borrow, invest, or handle user funds at any point in the process.
+
+Here's how it works: Users express their intent (e.g., swapping token A on blockchain A for token B on blockchain B). We then employ our routing/liquidity maximisation algorithm to find the most capital-efficient route from point A to point B. Once the route is determined, it's presented to the user for approval.
+
+Upon user confirmation and transaction signing, on-chain execution begins. Our Diamond contract on the source chain initiates the initial steps of the transaction, such as swapping the initial asset into a ‘bridgeable' asset.
+
+When migrating assets from chain A to chain B, we send the transaction and a message through CCIP, initiating a 24-minute process. To expedite this, we leverage CL Automations to detect transactions entering CCIP and trigger CL Functions to fetch transaction details and relay them to our Diamond contract on the destination chain.
+
+Upon receiving instructions, the Diamond contract interacts with our decentralised liquidity pool to obtain an 'extended flash loan' matching the amount being migrated through CCIP. This loan is used to finalise the transaction and send the desired assets to the user's wallet.
+
+Once the 24-minute CCIP asset migration process concludes, assets are deposited directly into the liquidity pool, repaying the loan. The entire end-to-end process, from user initiation to asset delivery, takes less than a minute. Additionally, we abstract away all gas fees, ensuring users don't need to worry about having native tokens on source or destination chains, as gas is paid using the assets being transacted.
+
+## How can general users take part in it?
+
+![Concero Testnet Signup](/static/images/concero/announcement/concero-testnet-signup/fig4.webp)
+
+Interested individuals can now become part of our incentivized testnet by signing up. This exclusive opportunity grants access to the platform starting at the end of March. Once enrolled, eligible users can actively participate in testing and provide invaluable feedback aimed at refining the platform before its official deployment.
+
+By joining our testnet, participants play a crucial role in shaping the future of our platform. Your insights and suggestions will directly contribute to enhancing its functionality, usability, and overall performance. We value your input and believe that your feedback will play a pivotal role in ensuring that our platform meets the highest standards of quality and reliability.
+
+Signing up for the testnet is simple. Just head over to www.concero.io/signup and follow the prompts to register.
+
+## What are the benefits of Testnet participation?
+
+The Concero Testnet is set to be an incentivized opportunity open to all eligible participants. This testnet will enable users to actively engage in testing activities and offer valuable feedback to enhance the platform. Stay tuned for more details on the incentivization program, which will be shared soon.
+
+## What after the Testnet signup?
+
+Following the signup for the testnet, we'll promptly initiate the launch of the testnet platform. This pivotal phase will enable users to rigorously test its functionalities, features, and capabilities. With the invaluable feedback collected during this period, we'll iterate and fine-tune the platform to ensure a seamless transition to the mainnet launch.
+
+Our team is committed to meticulously reviewing and implementing user feedback to enhance every aspect of the platform. By actively involving users in this iterative process, we aim to address any potential issues or concerns and optimise the platform for a successful mainnet release.
+
+Your participation in the testnet not only contributes to refining the platform but also ensures that it meets the highest standards of performance, reliability, and user experience. Together, we're laying the groundwork for a robust and cutting-edge solution that will revolutionise the landscape of decentralised infrastructure.
+
+We're excited to embark on this journey with you and look forward to your invaluable contributions as we work towards the mainnet launch. Stay tuned for further updates and announcements as we progress through this exciting phase of development.

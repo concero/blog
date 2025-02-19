@@ -1,0 +1,238 @@
+---
+title: 'Concero V2 — Technical Overview'
+date: '2024-11-25'
+lastmod: '2024-11-25'
+tags: ['concero', 'article', 'concero-v2']
+draft: false
+summary: 'Concero V2 is a new version of the Concero protocol that enables faster and more secure cross-chain communication.'
+authors: ['oleg']
+---
+
+# Introduction
+
+## A Word About Concero V1
+
+Concero V1 is a fully decentralised cross-chain bridging solution built on top of [Chainlink CCIP](https://docs.chain.link/ccip). The primary aim of V1 was to build an interoperability protocol that is resistant to manipulation and censorship, setting it apart from existing centralised solutions prone to such risks.
+
+Traditionally, achieving high levels of security and decentralisation in cross-chain protocols has led to slower transaction times, often making fast transactions the domain of centralised systems with inherent trust assumptions and single points of failure.
+
+Concero V1 was engineered to break this status quo. By leveraging Chainlink CCIP as a secure and [truly decentralised settlement layer](https://blog.chain.link/five-levels-cross-chain-security/), and coupling it with the decentralised compute capabilities of [Chainlink Functions](https://docs.chain.link/chainlink-functions), Concero V1 managed to achieve 25-second transfer speeds at competitive costs without compromising on security or decentralisation.
+
+For a detailed technical overview, please consult the following resources:
+
+- [Concero v1 Docs](https://docs.concero.io/cross-chain-infrastructure/overview/)
+- [Concero v1 Whitepaper](https://www.concero.io/whitepaper.pdf)
+
+## Concero V2
+
+Building upon the capabilities of Concero V1, which leveraged Chainlink CCIP and Chainlink Functions, we recognised the potential of extending the protocol's reach to a wider array of networks. This motivated us to develop Concero V2 — a cross-chain interoperability protocol capable of facilitating any-to-any network communication.
+
+## Unlimited network reach
+
+While Concero V2 introduces significant advancements over V1, it leverages relayer nodes economically secured by Symbiotic restaking. Coupling them with Chainlink Functions, Concero V2 effectively expands its reach to any chain.
+
+## Modularity
+
+Concero V2 provides developers with greater control over the modules required to confirm cross-chain messages. This modularity introduces an optional consensus-based approach to bridging and messaging, where multiple relayer nodes and existing networks can validate a message before it is confirmed and released. This added flexibility allows developers to fine-tune the speed, security, and cost of their cross-chain messages depending on their application requirements.
+
+## Unlimited transmitted data size
+
+An important update of Concero V2 is that the transmitted data size limit is now as high as it can be — not limited by the protocol itself, but merely by the constraints of the networks the protocol is interacting with.
+
+![Data size limit](/static/images/concero/article/concero-v2-technical-overview/fig1.webp)
+
+> “This example considers EVM chains only and their theoretical calldata size limit of 1.875 MB, given a 30M block gas limit (as per Ethereum network) and a non-zero calldata byte cost of 16 gas units. Other non-EVMs may vary.”
+
+## Concero V2 security
+
+As with the V1, the highest priority for Concero V2 is security. Given the new architecture and the unique security challenges it brings, two main security pillars have been implemented to ensure a reliable and safe operation of the protocol:
+
+- Economic security In order to ensure genuine behaviour of relayer nodes which are partially responsible for the essential functionality of the protocol, economic checks and balances are in place to reward genuine operations and penalise ingenuine ones. The optimal approach of implementing economic security for Concero V2 is the integration of [Symbiotic](https://docs.symbiotic.fi/), which as a restaking protocol has both the necessary functionality and capital required for the day-to-day operations of the infrastructure.
+- Cryptographic security It is critical that the protocol works as expected even in the absence of economic incentives. Cryptographic security serves as an essential pillar that provides objective proof of whether a claim is true or not. This ensures that even if all relayer nodes in the infrastructure are faulty, it wouldn't result in any value loss or wrong message propagation. Verifiable compute of Chainlink Functions serves as a trust-minimised source of truth for every transaction that goes through the protocol, confirming or denying their presence in the source chain.
+
+## Message types
+
+Concero V2 supports three types of cross-chain messages, all of which are covered in detail in the Transaction Flows section below.
+
+![Message type](/static/images/concero/article/concero-v2-technical-overview/fig2.webp)
+
+Each message type focuses on certain characteristics applicable to specific application use cases and is processed by a minimum of both of the following modules:
+
+- Relayer A Relays messages to a master chain, obtains and relays CLF reports to destination chain ConceroRouters
+- Chainlink Functions Verifies transactions on the source chain, generates verifiable report
+
+## Architecture of Concero V2
+
+### Schematic overview
+
+![Schematic overview](/static/images/concero/article/concero-v2-technical-overview/fig3.webp)
+
+The architecture of Concero v2 consists of the following modules, which are covered in detail below:
+
+- Router contracts
+- Chainlink Functions
+- Symbiotic contracts
+- Relayer nodes
+- Existing protocols
+
+### Router contracts
+
+Router contracts are deployed to every supported network of Concero V2 and serve as the single entry point for end users interacting with the protocol.
+
+The core functionality of router contracts includes:
+
+- Receiving incoming messages Upon receiving each incoming message from end users, the router contract emits a corresponding event, which is then picked up by relayer nodes and is processed in accordance with the individual transaction configuration.
+- Verifying incoming messages Depending on the message configuration, verification may involve a consensus among authorised verifying networks. Otherwise, a Chainlink Functions report serves as the single source of truth to ensure transaction presence on the source chain.
+- Releasing outbound messages After validating the message, it is released from the destination chain router contract. In the case of a value-transfer, the router contract pulls funds from the liquidity pool on the same chain before sending it to the end user.
+
+Additional functionality of router contracts includes:
+
+- Registering & de-registering operators
+- Collecting & distributing rewards to operators
+- Keeping track of locked delegated stake for each operator
+
+### Chainlink Functions
+
+Chainlink Functions is chosen as a trust-minimised verifiable compute to enable essential operations of Concero V2. Computation is requested from a CLF-enabled network — Base — and takes place on four nodes in the Chainlink Functions Decentralised Oracle Network (DON).
+
+The main purpose of Chainlink Functions in Concero V2 is to serve as a verifier of transaction presence on the source chain. After computation results are ready, a report is formed and posted back to the invoking contract. The report is then captured by Relayer A and sent to ConceroRouter on the destination chain.
+
+### Verifiable reports of Chainlink Functions
+
+The fact that the report is signed by at least 3 out of 4 DON nodes allows us to verify the following:
+
+- Recovered signers of the report match those of the authorised Chainlink DON nodes, therefore confirming the authenticity of the report.
+- Data in the report represents a consensus on the responses of at least 3 out of 4 DON nodes which individually collect confirmations from multiple randomised JSON RPC providers for higher data reliability.
+- The report which reaches the destination chain ConceroRouter has not been tampered with as the authorised signatures match the hash sum of the data.
+
+#### Schematic overview
+
+![Schematic overview - Chainlink Functions](/static/images/concero/article/concero-v2-technical-overview/fig4.webp)
+
+The following operations take place during Chainlink Functions runtime:
+
+- Obtaining event confirmations for a specific transaction given a block number, chain id and transaction hash.
+- Randomising JSON RPC providers for minimising trust assumptions in event fetching
+- The agreed upon result is signed by each of the DON nodes and returned on chain in form of a report, which can then be verified in order to ensure the origins and authenticity of data on the destination chain.
+
+### Symbiotic contracts
+
+As a restaking protocol, Symbiotic is responsible for the economic security of Concero v2 by ensuring genuine behaviour of node operators and penalising incorrect claims in case they occur.
+
+As the Symbiotic core contracts are deployed on Ethereum network, their state changes are minimised to ensure cost-efficiency of the protocol. State changes occur only in the case of slashable events, whereas during normal operation only state reads take place. These reads are used to ensure the operator performing an action is both registered and has sufficient delegated stake required for the operation.
+
+## Operator rewards
+
+Operator rewards are collected on ConceroRouter contracts at the time of successful transaction fulfilment and are withdrawn from every chain ConceroRouter is deployed on. This approach is chosen in line with minimising Ethereum state changes and maximising cost-efficiency of the infrastructure.
+
+The parties receiving rewards are:
+
+- Relayer A (collected on ConceroCLFRouter and ConceroRouter)
+- Relayer B (collected on ConceroRouter).
+
+> “The operator reward rates are yet to be announced.”
+
+## Operator slashing
+
+Slashing is an essential restaking mechanism which allows protocols to fine relayer operators — the only slashable parties — for inaccurate claims.
+
+Chainlink Functions is used to determine whether the transaction claim received from the relayer is accurate and therefore whether it is slashable. The order of operations outlined in Transaction Flows section set Chainlink Functions as the last party that confirms the transaction, enabling it to fetch published relayer results prior to sending the final report and therefore to simultaneously determine whether there is potential misalignment in consensus. If no consensus is reached, a report is posted to the slasher contract on the Ethereum network, which results in slashing of the operator(s) who posted the incorrect message, for at least 100% of the value that was being relayed.
+
+## Challenge period
+
+The challenge period is a time window during which a transaction claims can be disputed before the transaction is considered final. In Concero V2, the challenge period allows for the penalisation of incorrect actions of relayer operators before the transaction is released.
+
+One of the benefits of the restaking architecture of Concero v2 is a near-instant challenge period, which significantly increases delegated stake efficiency for operators. The role of Chainlink Functions in determining whether the operator is to be slashed makes the challenge period of roughly 10-20 seconds.
+
+This efficiency of delegated stake plays a major role in reducing the barrier of entry for operators in Concero V2, as for every 1 ETH delegated an operator is able to relay 1 ETH worth of transactions within ~20 seconds. After the challenges of ongoing transactions are fulfilled, the limit is set back to 1 ETH, allowing the operator to send another 1 ETH worth of transactions.
+
+## Relayer nodes
+
+There are two types of relayer nodes in Concero v2:
+
+**Relayer A (required)**
+
+Enables essential operations of Concero v2. Captures events from ConceroRouter contracts, triggering their confirmation via ConceroCLFRouter deployed on a CLF-Enabled chain in order to obtain the report. Listens for new reports emitted in ConceroCLFRouter, decodes and relays them to the corresponding destination chain ConceroRouter contracts.
+
+**Relayer B (optional)**
+
+Captures events from SRC chains, relays them to the DST chains as part of consensus with Chainlink Functions report and other networks. Developers are free to enable this optional relayer (as well as other networks) depending on their specific use case.
+
+## Existing protocols
+
+On top of the mandatory confirmation modules (Relayer A and Chainlink Functions), Concero plans to implement existing interoperability protocols to work alongside relayers in order to provide additional confirmations for messages and value transfers. In case developers choose to enable optional protocols, destination chain consensus will be determined based on multiple responses of selected networks and relayers, before the transaction is released. Keeping in mind increased transaction completion time and costs, an option of enabling additional protocols allows developers to adjust their risks per transaction in accordance with their specific use case.
+
+## Transaction flows
+
+### Non-value bearing messages
+
+The nature of non-value bearing messages aims to focus on low-cost, high-speed transactions. As these messages do not involve value, additional network verifications are unnecessary.
+
+1. End-user sends message to the source chain router contract
+2. Relayer A picks up an event emitted from the source chain router contract regarding the new message.
+3. Relayer A forwards the message to the Master Chain (Base) in order to request a report from Chainlink Functions.
+4. Chainlink Functions return the report to the CLF chain, which is picked up and decoded by Relayer A.
+5. Relayer A forwards the report and TX data to the destination chain router contract in accordance with the decoded report.
+6. Destination chain router contract decodes and verifies the report, ensuring it originated from Chainlink Functions node operators and has not been tampered with, in which case it releases the transaction.
+
+## Value-bearing messages & Value-transfers
+
+### Value-bearing messages
+
+As there is no technical way for Concero to determine if the message will result in a value unlock for the integrator, we may only recommend developers to enable an additional relayer verification (Relayer B) on an optional basis, which will then be coupled with Chainlink Functions report in the destination chain router consensus.
+
+### Value transfers
+
+Unlike value-bearing messages, value transfers utilise Concero's liquidity pools to facilitate transactions in under 20 seconds. As this is the most sensitive type of transfer, a mandatory dual verification with Chainlink Functions & Relayer B is enforced.
+
+The transaction flow remains the same for both types of transfers:
+
+1. End-user sends message to the source chain router contract
+2. Relayer A & Relayer B pick up an event emitted from the source chain router contract regarding the new message
+3. Relayer B forwards the message confirmation to the destination chain router.
+4. Relayer A forwards the message to the CLF-Enabled Master chain (Base) in order to request a report from Chainlink Functions.
+5. Chainlink Functions return the report to the CLF-enabled Mater chain, which is picked up and decoded by Relayer A.
+6. Relayer A forwards the report and TX data to the destination chain router contract in accordance with the decoded report.
+7. Destination chain router contract decodes and verifies the report, ensuring it originated from Chainlink Functions node operators and has not been tampered with. It ensures that all of the awaited confirmations have been received, ensures consensus on the message and releases the transaction.
+
+## Fees
+
+### Message fees
+
+> “Fixed messages fees are yet to be announced”
+
+### Value transfer fees
+
+![Value transfer fees](/static/images/concero/article/concero-v2-technical-overview/fig5.webp)
+
+As with Concero V1, the fees on top of the operating costs will remain the same.
+
+- Concero Fee: Standard fee charged by Concero across all value transfers.
+- Liquidity Provider Fee: Charged by the liquidity providers and is only applicable for cross-chain value transfers that utilise Concero liquidity pools.
+- Integrator Fee: Set by integrators on an individual basis.
+
+## Risk mitigation
+
+### Relayer node risks
+
+In case a relayer posts an incorrect message, Concero V2 has several mechanisms to mitigate any associated risks:
+
+- Economic Penalties All operators need to register with Symbiotic before operating on Concero V2 with delegated stake which ensures that wrong claims are penalised with slashing, making such economically infeasible.
+- Dual verification Relayers alone are not enough for releasing a message on the destination chain. Chainlink Functions is at least one of the parties which needs to confirm the claim before the transaction is released in case any additional verifying protocols are not enabled.
+
+### Chainlink Functions DON node risks
+
+In an unlikely event that the majority of Chainlink DON nodes produce an incorrect message on chain, the risk of value loss can be mitigated through enabling an additional verifier network or relayer (Concero Relayer B), in which case the consensus consisting of Chainlink Functions and an additional protocol will not be met, thereby not releasing the message on the destination chain.
+
+### Denial of service
+The reliance on node operators for essential operations of the Concero V2 means that the protocol risks temporary pauses or delays in case not enough nodes are in operation. In order to mitigate such risk, an economic model which is attractive for both the operators of Concero V2 and users and integrators of the protocol.
+
+
+
+
+
+
+
+
+
+

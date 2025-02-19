@@ -1,0 +1,50 @@
+---
+title: 'Next step for Concero'
+date: '2024-02-02'
+lastmod: '2024-02-02'
+tags: ['concero', 'article', 'vision']
+draft: false
+summary: 'Next step for Concero'
+authors: ['andy']
+---
+
+![Article banner](/static/images/concero/article/next-step-for-concero.webp)
+
+## Introduction
+Concero has grown and experimented a lot in the past few months and in this article I will summarise all of the conclusions we came to and how it will impact the future of our project. It is important to note that we learn and iterate every day so some points in this article may change with time. Having said that, I believe that we have formed a very good vision for Concero.
+
+## Concero early days
+Let's start off with why we launched our product when we did. It is no secret that at the moment the service is powered by third party providers. In particular — Li.Fi, Rango and Enso. Integrating them has been a key part of our strategy and throughout the time of us working together we developed a very good relationship with these projects and we are very thankful for their support thus far. Rather than spend a lot of time and resources on building out the infrastructure for cross chain transactions and aggregation we decided to use these providers and spend resources to understand the underlying needs and requirements that users have to help us understand the correct direction for product development. As many of you have experienced, we have been surveying people and interviewing users regularly to gather information so we can build a better product. This will continue to happen throughout the entire existence of Concero.
+
+## User Requirements
+
+This experience has led us to understand that users have three distinct requirements. Transactions have to be quick, safe and easy to perform. Interestingly, fees have not been such a big concern for users as long as the three main requirements are met. Let's dive a bit deeper into each of these three requirements:
+
+1. Speed — the most anxious point of any cross chain transaction or a transaction in general is the horrible waiting time between a user pressing swap and assets leaving their wallet until the point when desired assets have been deposited into their wallet. This waiting time needs to be reduced to a minimum to achieve a truly pleasant user experience.
+2. Safety — With a number of scams and hacks growing in web 3.0, safety of user funds becomes a hot topic. According to a Chainlink article, around 40% of all assets lost due to hacks have been bridge hacks. This is not surprising given the architecture of most bridges. This raises a lot of concerns for cross chain transactions and there has to be a better solution that will ensure the safety of user funds.
+3. Ease of use — User Experience has been a hot topic within the industry, especially since Ethereum rolled out EIP-4337 (Account Abstraction) and EIP-2938 (Gas abstraction). According to a 0x report, 30% of all abandoned transactions have been abandoned due to lack of gas on either source or destination chain. Making the experience of performing a transaction effortless is a key component towards onboarding more people into DeFi.
+Having learnt these fundamental user requirements, the Concero team has set out to build a system from the ground up that will address these issues and provide the best experience for our users.
+
+With any cross chain swap/transaction, there are three steps to it:
+
+1. Swaps on Source Chain to get the desired asset for bridging.
+2. Bridging process to move assets from source chain to destination chain
+3. Swaps on Destination Chain to acquire the user's desired asset.
+
+## What are we building?
+
+Let's discuss how Concero will execute each of those steps. For steps 1 and 3, we have built our in-house routing algorithm that utilises A* algorithms (same algorithms used to find the best route in google maps) in order to find the most cost effective and efficient route for our user. This routing algorithm also has liquidity maximisation functionalities that will allow larger volumes to be processed with minimal slippage by interacting with multiple liquidity pools at once to tap into unified on-chain liquidity. Once the best route has been found and it is passed on to our routing smart contract that will perform multiple steps in one transaction for execution. At this stage the user will sign a transaction and the transaction process will begin. We have already integrated the biggest DEXes on each chain of various types, including Uniswap V3/V4, Balancer and Curve to ensure that our users will have access to a large array of assets. Furthermore, for our staking aggregation, we are currently integrating lending protocols like Aave and Compound as well as liquid staking protocols like Lido to allow users to deposit assets into these protocols from any chain. When we launch on mainnet we will publish a benchmark comparison of our routing algorithms in comparison to our competitors.
+
+When it comes to step 2 — Bridging we have decided to build our own infrastructure to facilitate these transactions without the need to aggregate conventional third party bridges. As has been announced today, we have been accepted into a Chainlink Build Programme. We are very proud of this achievement and this is the first step towards building our new product. We will be working with Chainlink to build out a cross chain infrastructure with CCIP at the heart of it. Current problem that we see with CCIP is that it is slow and according to our tests takes approximately 26 minutes to execute a transaction. This is something that our solution will be addressing. We will be acting as an optimistic CCIP bridge by utilising Chainlink Functions and Automations in order to spot transactions that are coming into CCIP and issuing flash loans on the destination chain to surpass the 26 minute wait time. After the transaction has been passed through CCIP the destination pool is replenished and made whole. Our goal is to have an end to end transaction time of less than a minute. This includes all the swaps that need to happen on the source chain, the bridging process and the swaps on the destination chain. By utilising a strong partner like Chainlink we will be able to provide a consistent good experience to our users. With our research indicating that most cross chain transactions bridge either \$ETH, \$USDT or \$USDC we will be able to set up pools for each of these assets on supported chains and cover the needs of the vast majority of users. We will be experimenting with integrating Circle's CCTP for our \$USDC pools down the line as well and with Circle's support for Solana coming soon, we are very excited to provide routes from EVM networks to Solana.
+
+The primary reason behind choosing CCIP is to de-risk the whole process. Chainlink's pledge to safety really resonates with our ideologies and principles upon which this product is built. Furthermore, we are currently in talks with an on-chain insurance provider to introduce underlying insurance of every transaction on the platform to guarantee the safety of user funds.
+
+Our routing algorithm and cross chain infrastructure address safety and speed of transactions but when it comes to ease of use we have spent a lot of time optimising user experience to ensure that it is as frictionless as possible. One of the main components of this is gas abstraction. Our users will not need to refuel or manage gas on different chains as we will be taking care of that. Everytime you perform a transaction, we will be paying for gas in the chain's native tokens and we will be charging users in tokens that they desire to swap. This way, we will ensure that every transaction that you want to perform is always executed without fail. In addition, we have been taking your feedback about UI to heart and we have completely redesigned our UI to reflect your needs. When it comes to iterations in UI, it is a never-ending cycle and we will be improving it with every update of the product.
+
+## When is it happening?
+
+A reasonable question that comes to mind is — when is all of this going to be available? For the time being we are focusing on building out a consumer version of our product that will be available through a web app that will be available as early as Q2 2024. We plan to build a mobile app towards the end of 2024/beginning of 2025 to bring users an entry point to the world of DeFi in their pocket. As for commercial offering in the form of a Widget/SDK this should be available in Q3 2024. If you are a builder interested in integrating the next generation cross chain aggregator, please reach out to us so we can take your needs into account when building the SDK.
+
+What happens next? At the moment we are hard at work building this system and fundraising with an aim to launch our testnet. The testnet will be very exclusive and details about it will be shared with the community soon, so be sure to follow us on Twitter/X and join our Discord.
+
+If you would like to help us build Concero or just want to say hi feel free to reach out over email at — andy@concero.io
