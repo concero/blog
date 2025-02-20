@@ -9,7 +9,7 @@ const siteMetadata = {
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
   siteRepo: 'https://github.com/concero/blog',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/concero-logo.png`,
-  socialBanner: `${process.env.BASE_PATH || ''}/static/images/twitter-card.png`,
+  socialBanner: `${process.env.BASE_PATH || ''}/static/images/concero-card.png`,
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'contact@concero.io',
   github: 'https://github.com/concero',
