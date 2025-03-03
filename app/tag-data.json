@@ -1,9 +1,5 @@
 {
   "concero": 16,
-  "article": 5,
-  "vision": 4,
-  "concero-v2": 1,
-  "education": 1,
   "announcement": 11,
   "cers": 2,
   "concero-hub": 1,
@@ -12,5 +8,9 @@
   "ccip": 1,
   "testnet": 3,
   "partnership": 3,
-  "gas-abstraction": 1
+  "gas-abstraction": 1,
+  "article": 5,
+  "vision": 4,
+  "concero-v2": 1,
+  "education": 1
 }

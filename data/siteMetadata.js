@@ -6,7 +6,7 @@ const siteMetadata = {
   description: 'A blog created by the Concero team.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
+  siteUrl: 'https://www.blog.concero.io/',
   siteRepo: 'https://github.com/concero/blog',
   siteLogo: `${process.env.BASE_PATH || ''}/static/images/concero-logo.png`,
   socialBanner: `${process.env.BASE_PATH || ''}/static/images/concero-card.png`,
