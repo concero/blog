@@ -1,19 +1,19 @@
 {
   "concero": 19,
-  "article": 7,
-  "vision": 5,
-  "tutorial": 2,
-  "testnet": 5,
-  "concero-v2": 1,
-  "education": 1,
   "announcement": 11,
   "cers": 2,
   "concero-hub": 1,
   "chainlink": 2,
   "build": 1,
   "ccip": 1,
+  "testnet": 5,
   "partnership": 3,
   "gas-abstraction": 1,
   "lanca": 1,
-  "perspective": 1
+  "article": 7,
+  "perspective": 1,
+  "vision": 5,
+  "tutorial": 2,
+  "concero-v2": 1,
+  "education": 1
 }
