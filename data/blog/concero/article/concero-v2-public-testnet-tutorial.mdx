@@ -1,0 +1,231 @@
+---
+title: 'Concero Messaging V2: A Step-by-step Tutorial To The Public Testnet'
+date: '2025-04-14'
+lastmod: '2025-04-14'
+tags: ['concero', 'tutorial', 'testnet']
+draft: false
+summary: 'Public Testnet Launch for users to test Concero Messaging V2'
+authors: ['phuc']
+---
+
+![Article banner](/static/images/concero/article/chain-unification/banner.png)
+
+# Introduction
+
+As a flagship participant in the Chainlink BUILD program, Concero has developed a fully decentralised cross-chain messaging protocol that enables secure message transfers between blockchain networks. Currently, Concero V1 powers Lanca, our decentralised cross-chain bridge for bridging and DEX aggregation across multiple networks. 
+
+To advance our mission to unify the world's blockchain ecosystem, we have developed Concero Messaging V2, which represents the next evolution in cross-chain interoperation technology. Concero V2 connects blockchain networks more securely and rapidly than ever before. Also, Concero V2 empowers developers to build cross-chain applications with uncompromising security standards and complete decentralisation. 
+
+We're excited to welcome everyone to join the Concero Messaging V2 public testnet. This release gives testers early access to experience the enhanced capabilities and performance of our messaging protocol before the mainnet launch.
+
+This tutorial will guide you through step-by-step instructions on how to test Concero Messaging V2.
+
+---
+
+# Before you start testing Concero V2
+
+## Install Non-custodial Wallet
+*(Please skip this step if you already have Metamask installed)*
+
+Concero V2 is designed with an innovative architecture that allows it to connect with any blockchain network. During the testnet phase, you'll be able to test this capability by interacting with multiple testnet networks.
+
+For the best testing experience, we recommend using MetaMask as it provides the flexibility to easily add and connect to any testnet blockchain network you need to test with.
+
+For Metamask wallet installation instructions, please visit [our guide](https://www.blog.concero.io/blog/lanca/article/metamask-installation). 
+
+## Add Testnet Networks by using Chainlist
+
+As memtioned above, Concero V2 aims to unify the world's blockchain ecosystem. Therefore, in this testnet phase, testers will be able to test the Concero V2 messaging protocol by transferring tCERO token between multiple testnet networks.
+
+There are two ways to add testnet networks to your Metamask wallet: 
+
+1. Automatically by using Chainlist
+2. Manually by adding the network information
+
+### 1. Automatically by using Chainid/ Chainlist
+
+**Chainlist** is a open-source platform helping users to add mainnet and testnet networks to their wallets.
+
+Head to [Chainid website](https://chainid.network/) and you will see a list of supported networks, including both mainnet and testnet networks. For Concero V2 public testnet, you will mainly interact with testnet networks. 
+
+Please **Connect your wallet** to for further steps.
+
+![Chainid](/static/images/concero/article/concero-v2-tutorial/1-chainid-connect.jpg)
+
+In this tutorial, you will be instructed to add a Arbitrum Sepolia testnet to your wallet. You can do the same for other testnet networks.
+
+In the search bar, type in "Arbitrum", then it will show a list of supported testnet networks related to Arbitrum. 
+
+Select Arbitrum Sepolia testnet, and click on "Add Chain" button.
+
+![Chainid](/static/images/concero/article/concero-v2-tutorial/2-add-arbitrum.jpg)
+
+A prompt will appear to ask for your approval to add "Arbitrum Sepolia" network to your wallet. Click on "Approve".
+
+![Chainid](/static/images/concero/article/concero-v2-tutorial/3-approve-chain.jpg)
+
+### Notes:
+
+You can also use [Chainlist](https://chainlist.org/) to add testnet networks to your wallet. However, we found that there might be some issues with adding testnet networks to Metamask using Chainlist. 
+
+If you can not add the network automatically, please add the network manually as per the steps below.
+
+### 2. Manually by adding the network information
+
+For some reasons, you may not be able to add the network automatically. In this case, you can manually add the network information.
+
+Click to the Metamask extension icon on the top right corner of your browser. Then chose the Network management tab (the red box in the image below).
+
+![Metamask](/static/images/concero/article/concero-v2-tutorial/4-change-testnet.jpg)
+
+To see testnet networks, please enable the "Show test networks" option. Then click on "Add a custom network". 
+
+![Metamask](/static/images/concero/article/concero-v2-tutorial/5-show-testnet.jpg)
+
+A prompt will appear to ask for network information, including: Network name, RPC URL, Chain ID, Currency Symbol, Block Explorer URL.
+
+![Metamask](/static/images/concero/article/concero-v2-tutorial/6-custom-network.jpg)
+
+For these information, you can find it on [Chainid website](https://chainid.network/).
+
+For example, for Arbitrum Sepolia testnet, you can click to that network and find the required information. You can copy the information and paste into the custom network prompt. Once finished, click on "Save" button.
+
+![Chainid](/static/images/concero/article/concero-v2-tutorial/7-network-information.jpg)
+
+## Get native gas token for testnet networks
+
+As you will be interacting with multiple testnet networks, you will need to get the native gas token for each network.
+
+Usually, you can get the native gas token for free from the testnet faucet. We have prepared a list of testnet networks with a faucet link for your convenience.
+
+Please visit [this spreadsheet](https://docs.google.com/spreadsheets/d/1s6VH4EITpavCIdjaJUGs489cmzpDug_hGEGTnxzWYfk/edit?usp=sharing), copy the link in the "Faucet" column and request for the native gas token.
+
+There might be some issues with the faucet links. You can search on Google for the latest faucet links for the preferred network.
+
+Also, if you can not get the native gas token on your preferred network, please head to our Testnet channel on [Discord](https://discord.com/invite/lanca), and Concero team and the community will help you out.
+
+---
+
+# How to Test Concero Messaging V2? 
+
+## 1. Visit the Concero Testnet page and connect your wallet
+
+Head to the [Concero Messaging V2 Testnet](https://testnet.concero.io/) page and click on "Connect wallet".
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/8-testnet-page.jpg)
+
+*In some case, the page will ask you to add the ApeChain Curtis once clicking Connect Wallet, please approve the request.*
+
+A prompt will appear to ask for your approval to conncet your wallet, click on "Connect".
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/9-connect-wallet.jpg)
+
+## 2. Understand the Concero V2 testnet interface
+
+Once connected, you will see a user interface as below, with several useful information that are highlighted in the red boxes.
+
+They include:
+
+- **The amount of tCERO testnet token** in your wallet on connected testnet network (in this image, it is Ethereum Sepolia testnet)
+- **The amount of the native gas token** in your wallet on connected testnet network (in this image, it is ETH on Ethereum Sepolia testnet)
+- **Source Chain**: the network you want to send the tCERO token (in this image, it is Ethereum Sepolia testnet)
+- **Destination Chain**: the network you want to receive the tCERO token (in this image, it is Arbitrum Sepolia testnet)
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/10-testnet-interface.jpg)
+
+## 3. Interact with the Concero V2 testnet interface
+
+In this example, we will show you how to send tCERO token from Ethereum Sepolia testnet to Arbitrum Sepolia testnet.
+
+Before doing that, you need to get the tCERO tokens from our faucet, please follow the steps below:
+
+1. Click on the (+) button on the top right side of the interface.
+2. A dashboard will appear with a list of supported tested networks. You can select any network you want to get the tCERO tokens. Here, we selected Ethereum Sepolia testnet.
+3. Then, a prompt will appear as *"Adding token"*, you will need to wait for a few seconds. After that, it will automatically close the prompt and tCERO will be sent to your requested network.
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/11-get-tcero.jpg)
+
+### Notes:
+
+In some cases, you will see the message **"Error, please try again"** on the prompt as below. Please try to get tCERO from other networks or try it later, our faucet might be over-requested at that time. 
+
+We are working hard to increase the capacity of the faucet. Thanks for your understanding and patience.
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/12-tcero-error.jpg)
+
+To check your tCERO balance on the requested network, please do as below:
+
+1. Click on the "Source Chain" dropdown menu
+2. Then, you will see the tCERO balance on all the supported tested networks.
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/13-tcero-balance.jpg)
+
+## 4. Send tCERO token from Source Chain to Destination Chain
+
+Once you have the tCERO tokens on your wallet, you can now start testing the Concero V2 messaging protocol.
+
+### 4.1 Select the Source Chain and Destination Chain
+
+Here, we choose Ethereum Seppolia as Source chain and Arbitrum Sepolia as Destination chain. Enter the amount of tCERO you want to send.
+
+Click "Begin Swap" to initiate the transaction.
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/14-send-tcero.jpg)
+
+### 4.2 Confirm the transaction (a two-step process)
+
+Once you click on "Begin Swap", a prompt will appear to ask for your confirmation. Click "Confirm" to proceed the allowance process.
+
+**Please be patient as the transaction might take a few seconds to complete.**
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/15-confirm-sending.jpg)
+
+Once the Allowance is done, you will see the interface changing as below. Another prompt will appear to ask for your confirmation again. Click "Confirm" to proceed.
+
+**Please be patient as the transaction might take a few seconds to complete.**
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/16-confirm-sending.jpg)
+
+### 4.3 Check the transaction status
+
+Once the transaction is completed, you will see the transaction status as below. 
+
+Congratulations! You have successfully sent tCERO token from Ethereum Sepolia testnet to Arbitrum Sepolia testnet.
+
+Don't forget to claim your CERs by clicking on the "Claim" button.
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/17-success-tx.jpg)
+
+Also, don't forget to share your successful transaction on X to have a more chance to get more CERs.
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/18-share-on-x.jpg)
+
+### 4.4 Try swapping from other networks
+
+You can try swapping from other networks by repeating the steps above, by selecting different Source and Destination chains.
+
+If the selected testnet networks are not supported with your Metamask wallet, please add the networks before starting the swap.
+
+The name of the supported testnet can be found on the balance dashboard, then search for the network name on the [Chainid website](https://chainid.network/), and add the testnet network to your wallet.
+
+Please check the section **"Add Testnet Networks by using Chainid/ Chainlist"** for detailed instructions.
+
+---
+
+# Conclusion
+
+We appreciate your interest in testing Concero Messaging V2. We are working hard to improve the protocol and make it more stable for your testing experience. 
+
+If you have any feedback or suggestions, please head to our Testnet channel on [Discord](https://discord.com/invite/lanca) and let us know.
+
+Or, you can send your feedback to us via [this form](https://forms.gle/23333333333333333333333333333333).
+
+We appreciate your feedback and suggestions.
+
+We will continue to update the protocol and add more testnet networks to the dashboard. Make sure to follow us on our socials for upcoming updates.
+
+---
+
+## 🤝 Follow us for upcoming updates on Concero Socials :
+
+[Concero.io](https://concero.io) | [Twitter](https://x.com/concero_io) | [Discord](https://discord.com/invite/lanca) | [Telegram](https://t.me/concero_news)
