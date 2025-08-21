@@ -14,7 +14,7 @@ authors: ['phuc']
 
 To build truly resilient decentralised cross-chain messaging infrastructure like Concero V2, a cryptographic approach that eliminates single points of failure is essential. This is achieved through threshold cryptography, a technique that enhances security by distributing trust across a network. Instead of relying on a single, vulnerable secret key, the key is split into multiple unique shares and distributed among a committee of independent nodes. This foundational step ensures no single entity holds complete control over the system's security.
 
-![Threshold cryptography](/static/images/concero/article/chainlink-functions-concero-v2/cryptographic-consensus.png)
+![Threshold cryptography](/static/images/concero/article/chainlink-functions-concero-v2/CF-consensus.png)
 
 The power of this model lies in its collective action requirement. A cryptographic operation, such as authorising a transaction or decrypting sensitive data, can only occur when a minimum number of these nodes collaboratively use their shares. 
 
@@ -24,7 +24,7 @@ This architecture ensures reliable security and fault tolerance, allowing the ne
 
 To enable sophisticated cross-chain interactions, Concero V2 strategically integrates Chainlink Functions, a serverless developer platform that provides smart contracts with access to trust-minimised compute infrastructure. Chainlink Functions allows dApps to fetch data from virtually any API and execute custom computations off-chain, extending the capabilities of smart contracts beyond their native environments.
 
-![Chainlink Functions](/static/images/concero/article/chainlink-functions-concero-v2/CF-how-it-works.png)
+![Chainlink Functions](/static/images/concero/article/chainlink-functions-concero-v2/chainlink-functions.png)
 
 Chainlink Functions operates via a Decentralised Oracle Network (DON), and each node within this DON independently executes the smart contract's source code in a sandboxed, serverless environment. Following independent execution, the DON leverages the Chainlink Offchain Reporting (OCR) protocol to aggregate the results from all participating nodes, arriving at a cryptographically secured consensus on the final output. This aggregated result is then transmitted back to the requesting smart contract through a callback function for on-chain utilisation.
 
@@ -34,13 +34,21 @@ A critical feature for securing private data, such as API keys or credentials, i
 
 Concero V2 leverages Chainlink Functions as its primary cryptographic security layer, serving as a trust-minimised verification mechanism essential for secure cross-chain messaging. Its critical role is to definitively verify the presence and details of transactions on source blockchains, ensuring data integrity across disparate networks.
 
-![Chainlink Functions in ConceroV2](/static/images/concero/article/chainlink-functions-concero-v2/CF-workflow.png)
+![Chainlink Functions in ConceroV2](/static/images/concero/article/chainlink-functions-concero-v2/CF-in-concero.png)
 
-The operational workflow within Concero V2 is meticulously structured. Computational requests are initiated from the ConceroVerifier contract, acting as the central hub for the protocol's verification operations and operator management. The actual computation for verification is distributed across four independent nodes within the Chainlink DON, ensuring a decentralised and redundant process. Each node independently retrieves event confirmations by querying transaction details using the provided block number, chain ID, and transaction hash. To bolster data reliability, Concero V2 implements provider randomisation, where each DON node queries different JSON RPC providers, significantly reducing trust assumptions at the data collection phase.
+The operational workflow within Concero V2 is meticulously structured. Computational requests are initiated from the ConceroVerifier contract, acting as the central hub for the protocol's verification operations and operator management. The actual computation for verification is distributed across four independent nodes within the Chainlink DON, ensuring a decentralised and redundant process. 
 
-A consensus mechanism requiring agreement from at least three out of the four DON nodes is enforced to generate a valid, verifiable report. Once consensus is achieved, each participating node cryptographically signs the agreed-upon result. This comprehensive report, containing both the consensus data and the cryptographic signatures from the participating nodes, is then transmitted by Relayer A to the ConceroRouter on the destination chain. This design inherently removes the need for the ConceroRouter to maintain a constantly updated list of authorised operators, as the information can be directly and securely extracted from the tamper-proof report itself.
+Each node independently retrieves event confirmations by querying transaction details using the provided block number, chain ID, and transaction hash. To bolster data reliability, Concero V2 implements provider randomisation, where each DON node queries different JSON RPC providers, significantly reducing trust assumptions at the data collection phase.
 
-Upon receipt, the ConceroRouter on the destination chain undertakes rigorous on-chain verification steps. This includes performing signature recovery to confirm that the report's signers precisely match the authorised Chainlink DON nodes, thereby validating the report's authenticity. The system also verifies that the data truly represents a genuine consensus by confirming contributions from at least three distinct DON nodes, each having independently validated information from multiple randomised RPC providers. Finally, hash verification ensures that the report's hash sum aligns with its authorised signatures, confirming that the data remained unaltered during transmission, rendering it tamper-resistant.
+A consensus mechanism requiring agreement from at least three out of the four DON nodes is enforced to generate a valid, verifiable report. Once consensus is achieved, each participating node cryptographically signs the agreed-upon result. This comprehensive report, containing both the consensus data and the cryptographic signatures from the participating nodes, is then transmitted by Relayer A to the ConceroRouter on the destination chain. 
+
+This design inherently removes the need for the ConceroRouter to maintain a constantly updated list of authorised operators, as the information can be directly and securely extracted from the tampenr-proof report itself.
+
+Upon receipt, the ConceroRouter on the destination chain undertakes rigorous on-chain verification steps. This includes performing signature recovery to confirm that the report's signers precisely match the authorised Chainlink DON nodes, thereby validating the report's authenticity. 
+
+The system also verifies that the data truly represents a genuine consensus by confirming contributions from at least three distinct DON nodes, each having independently validated information from multiple randomised RPC providers. 
+
+Finally, hash verification ensures that the report's hash sum aligns with its authorised signatures, confirming that the data remained unaltered during transmission, rendering it tamper-resistant.
 
 # Innovation and Strategic Impact on Concero V2 Messaging
 
@@ -48,15 +56,21 @@ The integration of Chainlink Functions as its cryptographic security layer provi
 
 ### Objective Security and Unmatched Efficiency
 
-First, this layer establishes a mandatory and objective foundation for security, fundamentally shifting away from single points of failure. By relying on the mathematically verifiable truth provided by cryptography, Concero V2 ensures that cross-chain messages are inherently valid and untampered. This forms an impenetrable base for all operations, preventing the processing of forged or incorrect messages and building critical trust. From a business perspective, this innovative verification approach delivers unparalleled efficiency and scalability. It completely eliminates the need for expensive and cumbersome full node or light client implementations that burden traditional cross-chain solutions. This results in virtually zero integration costs and drastically reduced implementation timeframes, making secure cross-chain connectivity accessible for any network, regardless of its size or resources.
+First, this layer establishes a mandatory and objective foundation for security, fundamentally shifting away from single points of failure. By relying on the mathematically verifiable truth provided by cryptography, Concero V2 ensures that cross-chain messages are inherently valid and untampered. This forms an impenetrable base for all operations, preventing the processing of forged or incorrect messages and building critical trust. 
+
+From a business perspective, this innovative verification approach delivers unparalleled efficiency and scalability. It completely eliminates the need for expensive and cumbersome full node or light client implementations that burden traditional cross-chain solutions. This results in virtually zero integration costs and drastically reduced implementation timeframes, making secure cross-chain connectivity accessible for any network, regardless of its size or resources.
 
 ### Synergy, Speed, and Capital Efficiency
 
-Second, the cryptographic layer enables a powerful synergy with Concero V2's economic security layer, which is powered by Symbiotic's restaking infrastructure. The cryptographic proofs generated by Chainlink Functions serve as the deterministic triggers for actions within this economic layer. With this immediate, objective verification, Concero V2 cuts the traditional multi-day confirmation period down to under 20 seconds. This rapid finality dramatically improves capital efficiency by shortening asset lock-up times for operators. Consequently, the network becomes more accessible and unlocks the potential for a new generation of time-sensitive decentralised applications that were previously impractical to build.
+Second, the cryptographic layer enables a powerful synergy with Concero V2's economic security layer, which is powered by Symbiotic's restaking infrastructure. The cryptographic proofs generated by Chainlink Functions serve as the deterministic triggers for actions within this economic layer. With this immediate, objective verification, Concero V2 cuts the traditional multi-day confirmation period down to under 20 seconds. This rapid finality dramatically improves capital efficiency by shortening asset lock-up times for operators. 
+
+Consequently, the network becomes more accessible and unlocks the potential for a new generation of time-sensitive decentralised applications that were previously impractical to build.
 
 ### Decoupled Architecture and Robust Risk Mitigation
 
-Finally, Concero V2's architecture strategically decouples message propagation from validation. This separation streamlines operational efficiency and is pivotal for reliable risk mitigation. It creates an independent verification layer that is not solely reliant on relayers, ensuring that even if a relayer were compromised, it could not successfully transmit an unauthorised message. In the unlikely event of an oracle network compromise, Concero V2's modular design allows for supplementary verification networks to be enabled. This would require consensus from multiple independent sources before a message is released, further enhancing resilience and ensuring the platform remains highly resistant to a wide array of attack vectors.
+Finally, Concero V2's architecture strategically decouples message propagation from validation. This separation streamlines operational efficiency and is pivotal for reliable risk mitigation. It creates an independent verification layer that is not solely reliant on relayers, ensuring that even if a relayer were compromised, it could not successfully transmit an unauthorised message. 
+
+In the unlikely event of an oracle network compromise, Concero V2's modular design allows for supplementary verification networks to be enabled. This would require consensus from multiple independent sources before a message is released, further enhancing resilience and ensuring the platform remains highly resistant to a wide array of attack vectors.
 
 # Conclusion
 
