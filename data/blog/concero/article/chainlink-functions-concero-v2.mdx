@@ -24,7 +24,7 @@ This architecture ensures reliable security and fault tolerance, allowing the ne
 
 To enable sophisticated cross-chain interactions, Concero V2 strategically integrates Chainlink Functions, a serverless developer platform that provides smart contracts with access to trust-minimised compute infrastructure. Chainlink Functions allows dApps to fetch data from virtually any API and execute custom computations off-chain, extending the capabilities of smart contracts beyond their native environments.
 
-![Chainlink Functions](/static/images/concero/article/chainlink-functions-concero-v2/chainlink-functions.png)
+![Chainlink Functions](/static/images/concero/article/chainlink-functions-concero-v2/CF-general.png)
 
 Chainlink Functions operates via a Decentralised Oracle Network (DON), and each node within this DON independently executes the smart contract's source code in a sandboxed, serverless environment. Following independent execution, the DON leverages the Chainlink Offchain Reporting (OCR) protocol to aggregate the results from all participating nodes, arriving at a cryptographically secured consensus on the final output. This aggregated result is then transmitted back to the requesting smart contract through a callback function for on-chain utilisation.
 
