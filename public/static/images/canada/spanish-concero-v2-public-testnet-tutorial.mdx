@@ -1,0 +1,171 @@
+---
+title: '[ES] Concero Messaging V2: Tutorial paso a paso para la testnet pública'
+date: '2025-04-13'
+lastmod: '2025-04-13'
+tags: ['concero', 'tutorial', 'testnet']
+draft: true
+summary: 'Concero Messaging V2: Tutorial paso a paso para la testnet pública'
+authors: ['marc']
+---
+
+# Introducción
+
+Como participante destacado del programa Chainlink BUILD, Concero ha desarrollado un protocolo de mensajería entre cadenas totalmente descentralizado, que permite transferencias de mensajes seguras entre distintas redes blockchain. Actualmente, Concero V1 impulsa Lanca, nuestro puente descentralizado para interoperabilidad y agregación DEX entre múltiples redes.
+
+Para avanzar en nuestra misión de unificar el ecosistema blockchain global, hemos creado Concero Messaging V2, la siguiente evolución en tecnología de interoperabilidad entre cadenas. Esta nueva versión conecta redes blockchain de forma más rápida y segura que nunca. Además, brinda a los desarrolladores el poder de crear aplicaciones cross-chain con altos estándares de seguridad y total descentralización.
+
+Estamos muy emocionados de invitarte a participar en la testnet pública de Concero Messaging V2. Con esta versión, tendrás acceso anticipado para experimentar todas las capacidades y el rendimiento mejorado del protocolo antes del lanzamiento oficial en mainnet.
+
+Este tutorial te guiará paso a paso para probar Concero Messaging V2.
+
+---
+
+# Antes de comenzar a probar Concero V2
+
+Concero V2 fue diseñado con una arquitectura innovadora que le permite conectarse con cualquier red blockchain. Durante esta fase de testnet, podrás poner a prueba esta capacidad interactuando con múltiples redes de testnet y transfiriendo el token tCERO entre ellas.
+
+🔧 Requisitos previos
+Para participar, necesitarás cumplir con algunos requisitos básicos:
+
+## Instalar una billetera sin custodia
+
+*(Salta este paso si ya tienes MetaMask)*
+
+Recomendamos usar MetaMask, ya que te permite agregar fácilmente redes de testnet y conectarte con ellas.
+
+Puedes consultar nuestra [guía de instalación de MetaMask](https://www.blog.concero.io/blog/concero/article/metamask-installation). 
+
+## Agregar redes de testnet personalizadas a tu billetera
+
+*(Salta este paso si ya sabes cómo hacerlo)*
+
+Consulta nuestra [guía paso a paso para añadir redes personalizadas](https://www.blog.concero.io/blog/concero/article/add-custom-network-tutorial).
+
+## Obtener tokens de gas nativos para las redes de testnet
+
+Para interactuar con las testnets, necesitarás el token de gas correspondiente a cada una (como ETH en Sepolia, por ejemplo).
+
+Puedes obtener estos tokens de forma gratuita desde los faucets oficiales. Hemos preparado una hoja con los enlaces a cada faucet para facilitarte el proceso:
+
+📄 Ver hoja de [faucets](https://docs.google.com/spreadsheets/d/1e0W0ZwgY_Bq-YDUk6JZHfdpcVYxqrvIS60gSCnoDeTg/edit?gid=1753051773#gid=1753051773g) 
+
+Si no puedes conseguir gas en alguna red, entra a nuestro canal de testnet en [Discord](https://discord.com/invite/lanca) y con gusto te ayudaremos.
+
+---
+
+# ¿Cómo probar Concero Messaging V2?
+
+## 1. Entra a la página de la testnet y conecta tu billetera
+
+Accede a [Concero Messaging V2 Testnet](https://testnet.concero.io/) page and Haz clic en  "Connect wallet".
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/8-testnet-page.jpg)
+
+*Es posible que te pida agregar la red ApeChain Curtis. Acepta la solicitud.*
+
+Cuando aparezca el aviso para conectar tu billetera, haz clic en “Connect”
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/9-connect-wallet.jpg)
+
+## 2. Familiarízate con la interfaz de la testnet
+
+Una vez conectado, verás una interfaz con información clave:
+
+- **Saldo de tCERO** en la red actual (ejemplo: Ethereum Sepolia)
+- **Saldo del token de gas nativo** en esa red (ejemplo: ETH)
+- **Red de origen** desde la que quieres enviar tokens
+- **Red de destino** a la que quieres enviar los tokens
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/10-testnet-interface.jpg)
+
+## 3. Interactuar con la interfaz
+
+En este ejemplo, haremos un envío de tCERO desde Ethereum Sepolia a Arbitrum Sepolia.
+
+Primero, necesitas reclamar tCERO desde el faucet:
+
+1. Haz clic en el botón (+) arriba a la derecha.
+2. Aparecerá un panel con todas las redes soportadas. Elige una (por ejemplo, Ethereum Sepolia).
+3. Aparecerá un mensaje indicando que se está agregando el token. Espera unos segundos, se cerrará automáticamente, y los tCERO serán enviados a tu billetera.
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/11-get-tcero.jpg)
+
+💡 Si ves el mensaje “Error, please try again”, intenta más tarde o selecciona otra red: puede que el faucet esté muy solicitado.
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/12-tcero-error.jpg)
+
+Para verificar tu saldo de tCERO:
+
+1. Haz clic en el menú desplegable "Source Chain"
+2. Verás el saldo en cada red testnet soportada
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/13-tcero-balance.jpg)
+
+## 4. Enviar tokens tCERO entre cadenas
+
+Una vez que tengas tCERO en tu billetera, puedes comenzar a probar el protocolo de mensajería.
+
+🔔 Asegúrate de tener suficiente gas en la red de origen para cubrir la transacción.
+
+### 4.1 Selecciona la red de origen y destino
+
+Por ejemplo, selecciona Ethereum Sepolia como origen y Arbitrum Sepolia como destino.
+
+- Ingresa la cantidad de tCERO que deseas enviar
+- Haz clic en "Begin Swap"
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/14-send-tcero.jpg)
+
+### 4.2 Confirma la transacción (2 pasos)
+
+Aparecerá un mensaje para aprobar el gasto de tokens. Haz clic en “Confirm”. Espera unos segundos a que se complete.
+
+**Por favor, tenga paciencia ya que la transacción puede tardar unos segundos en completarse.**
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/15-confirm-sending.jpg)
+
+Una vez aprobada la asignación, verás otro mensaje. Haz clic nuevamente en “Confirm” para ejecutar la transacción. Espera unos segundos a que se complete.
+
+**Por favor, tenga paciencia ya que la transacción puede tardar unos segundos en completarse.**
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/16-confirm-sending.jpg)
+
+### 4.3 Verifica el estado de la transacción
+
+Cuando termine, verás el estado en pantalla.
+
+🎉 ¡Felicidades! Has enviado con éxito tCERO de Ethereum Sepolia a Arbitrum Sepolia.
+
+👉 No olvides hacer clic en “Claim” para reclamar tus CERs (recompensas de testnet).
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/17-success-tx.jpg)
+
+📢 Y si quieres más CERs, ¡comparte tu transacción en X/Twitter!
+
+![Concero V2 Testnet](/static/images/concero/article/concero-v2-tutorial/18-share-on-x.jpg)
+
+### 4.4 Prueba con otras redes
+
+Puedes repetir el proceso con otras redes cambiando las cadenas de origen y destino.
+
+Si tu billetera no tiene añadida alguna red, búscala en [Chainlist website](https://chainlist.org/) o en [Chainid website](https://chainid.network/), y agrégala manualmente.
+
+[Consulta nuestra guía](https://www.blog.concero.io/blog/concero/article/add-custom-network-tutorial) para instrucciones detalladas sobre cómo hacerlo.
+
+---
+
+# Conclusión
+
+Gracias por sumarte a probar Concero Messaging V2. Estamos trabajando constantemente para mejorar el protocolo y ofrecerte una experiencia de testnet más estable.
+
+Si tienes comentarios, ideas o encontraste algún problema, pásate por nuestro canal de testnet en [Discord](https://discord.com/invite/lanca) y déjanos tu feedback. Tu feedback es fundamental para que Concero siga creciendo.
+
+Seguiremos actualizando la plataforma y agregando nuevas redes de testnet.
+
+Síguenos en redes para estar al tanto de todas las novedades.
+
+---
+
+## 🤝 Síguenos para actualizaciones en las redes sociales de Concero :
+
+[Concero.io](https://concero.io) | [Concero Blog](https://blog.concero.io) | [Twitter](https://x.com/concero_io) | [Discord](https://discord.com/invite/lanca) | [Telegram](https://t.me/concero_news)
