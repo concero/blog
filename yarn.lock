@@ -9842,14 +9842,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:19.0.0":
-  version: 19.0.0
-  resolution: "react-dom@npm:19.0.0"
+"react-dom@npm:19.0.1":
+  version: 19.0.1
+  resolution: "react-dom@npm:19.0.1"
   dependencies:
     scheduler: ^0.25.0
   peerDependencies:
-    react: ^19.0.0
-  checksum: 009cc6e575263a0d1906f9dd4aa6532d2d3d0d71e4c2b7777c8fe4de585fa06b5b77cdc2e0fbaa2f3a4a5e5d3305c189ba152153f358ee7da4d9d9ba5d3a8975
+    react: ^19.0.1
+  checksum: 43f2b6d5f83cfbdf9715b87b5eb4e38a5bb624c8a99cc9397154282e62d1aa03b209276d957f0bf0a8bd3907291b2866093a7ab571b8c2a4553facca4463d583
   languageName: node
   linkType: hard
 
@@ -11509,7 +11509,7 @@ __metadata:
     prettier: ^3.0.0
     prettier-plugin-tailwindcss: ^0.6.11
     react: 19.0.1
-    react-dom: 19.0.0
+    react-dom: 19.0.1
     reading-time: 1.5.0
     rehype-autolink-headings: ^7.1.0
     rehype-citation: ^2.0.0
