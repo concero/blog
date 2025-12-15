@@ -1,0 +1,95 @@
+---
+title: "Motherboard - Open Interoperability Framework"
+date: '2025-12-09'
+lastmod: '2025-12-09'
+tags: ['concero', 'article', 'interop']
+draft: false
+summary: "Motherboard introduces a modular framework that unbundles relayers, verifiers, and RPCs to give developers total control over cost and security on a per-transaction basis. This new architecture commoditises distribution and eliminates vendor lock-in, finally allowing apps to scale permissionlessly to any chain without asking for permission."
+authors: ['andy']
+---
+
+![Article banner](/static/images/concero/article/andy-articles/andy-article3-banner.png)
+
+Motherboard is a trustless, modular, and permissionless environment where specialised infrastructure providers interact with each other to enable cross-chain communication.
+
+### Key USPs/Unlocks:
+
+Purpose-built infrastructure defined within every transaction  (Why use `$1B` rails for a `$10` tx, why use `$10` rails for `$1B` tx?):
+
+- Per-transaction optimisation - optimise for attributes that matter to your users, don't adapt to the constraints imposed by infrastructure providers.
+- Upgradable - no provider-based vendor-lock, switch out and upgrade individual modules quickly.
+
+### Sovereignty and control
+
+- No walled gardens - App developers, protocol developers, and asset issuers are now in control.
+- Own your distribution - deploy to chains where your users reside whenever you want, and switch individual modules whenever you need to.
+- Take back as much control as you want by deploying your own modules to service your application, protocol, or asset.
+
+### Distribution - Commoditised
+
+- Non-discriminatory distribution - easy, quick, and permissionless scaling to new chains (takes less than 20 min and costs less than $1 to deploy).
+- We are currently developing easy scaling to new VMs, with the goal of presenting at the end of Q1 2026.
+- **Trustless, Permissionless, and Neutral**
+- There is no one party that has de facto control over your transactions.
+- Anyone can join, there is no preferential treatment for anyone.
+
+### How does it work?:
+
+We broke down the process of messaging into independent actions/responsibilities that are performed by three distinct actors:
+
+1. Relayers (relayer networks): Relayers trigger validation and transport messages and proofs to their destination. Relayers are responsible for managing gas on all chains.
+2. Verifiers (prover networks): Verifiers generate a tamper-proof report attesting to transaction validity. Verifiers are chain-agnostic.
+3. RPC providers: RPC providers solely provide read/write services.
+
+### Transaction lifecycle:
+
+Within every transaction, the user specifies the following attributes:
+- Relayer network
+- Verifier Network
+- Read RPC (for verifier)
+- Write RPC (for relayer delivery)
+- Destination chain
+
+![Message Lifecycle Diagram](/static/images/concero/article/andy-articles/motherboard-message-lifecycle.png)
+
+Once the transaction enters the router contract, the specified relayer network will identify the transaction and trigger validation from the specified verifier network via an HTTP request, providing the user-defined Read RPC endpoint to the verifier.
+
+The verifier network reads the event and generates a tamper-proof report, which is then returned to the relayer network.
+
+The relayer network delivers the message and report onto the destination chain and writes it onchain through a user-defined RPC endpoint.
+
+Once the transaction is submitted, the report and relayer signature are verified against the verifier contracts on the destination chain.
+
+Once both match, the transaction is deemed valid and is propagated to the client, who is handed the message along with successful verifications. The client assesses the message and its validations to determine whether it can be processed further.
+
+This process is fully trustless, as there is no single party that acts as a source of truth or has de facto control over the transaction. Each independent system actor is only responsible for a part of the process, rather than executing the entire transaction itself.
+
+Each system actor/module can be changed by simply modifying the parameters within the transaction sent to the router.
+
+### How does it impact Stakeholders:
+
+#### Asset Issuers
+- Full control over Burn/Mint rights
+- Full control over distribution - maximum Total Addressable Market (TAM).
+- Additional revenue streams and easier enforcement of regulations as specialised modules are deployed.
+
+#### Protocols
+- Define the logic and inherit the reach/distribution
+- Optimise for attributes that matter to your customers, use-case specific
+
+#### Apps
+Motherboard is DeFi's largest distribution rail - maximise your TAM by integrating protocols that are built on top of Motherboard.
+
+### Final Remarks:
+
+Motherboard has been designed in order to tackle the problems that I have outlined in the “Interoperability is broken” article. What Motherboard offers is a neutral, non-discriminatory, trustless, permissionless, and open system where communication and distribution are commoditised. As mentioned in the “What is Messaging” article, what we have built is not a new iteration of an interoperability protocol but a new mental model of interoperability that redefines the power dynamics between value generators and infrastructure providers.
+
+Motherboard will go into mainnet by the end of 2025.
+
+I will be unveiling protocols and use cases that we have developed on top of the Motherboard in the coming articles, so stay tuned!
+
+---
+
+## 🤝 Follow us for upcoming updates on Concero Socials :
+
+[Concero.io](https://concero.io) | [Concero Blog](https://blog.concero.io) | [Twitter](https://x.com/concero_io) | [Discord](https://discord.com/invite/lanca) | [Telegram](https://t.me/concero_news)

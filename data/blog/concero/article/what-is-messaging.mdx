@@ -1,0 +1,72 @@
+---
+title: "What Is Messaging?"
+date: '2025-12-04'
+lastmod: '2025-12-14'
+tags: ['concero', 'article', 'interop']
+draft: false
+summary: "We trace the evolution of cross-chain communication from the telegraph era of rent-seeking monopolies to the inevitable future of open connectivity. The next phase of Web3 demands a neutral and non-discriminatory system similar to TCP/IP, where no single provider owns the infrastructure."
+authors: ['andy']
+---
+
+![Article banner](/static/images/concero/article/andy-articles/andy-article2-banner.png)
+
+Blockchains are monolithic by design, they cannot natively accept or distribute information with the outside world, including other chains. In order to facilitate communication, they need intermediaries.
+
+Data from the outside world is pushed onchain through Oracles.
+
+Data from the blockchains can be viewed by the outside world through RPCs.
+
+Data passing between chains is done through messaging (interoperability protocols).
+
+So, to answer the question of “What is messaging” - “Messaging is the process of passing instructions/data from one blockchain to another, so an event on chain A can trigger an event on chain B”.
+
+***What needs to happen for a message to find its way from chain A to chain B?***
+
+1. Identify/read a message - once the message is sent, it needs to be read
+2. Validate/Prove a message - once the message is read, a proof of that message has to be generated
+3. Deliver/transport - once the message is read and a proof is generated, both have to be delivered to the destination chain.
+4. Write/submit - both the message and the proof have to be submitted to the destination chain for verification and execution.
+
+***What has been the evolution of interoperability and messaging?***
+
+As the market for cross-chain activity has evolved, our approaches to enabling messaging have evolved with it. I will use the analogy with telecommunication to explain this more clearly.
+
+**Monolithic (similar to the telegraph)** - dedicated connection between two points:
+
+This was the status quo back in the 2017 cycle - a single operator (or a network of multiple operators) would establish a connection between two chains, and they would read-write between them.
+
+Back then, we had very few chains and new ones would emerge rarely, as the costs associated with running your own decentralised ledger (chain) were high - around $15M annually. This led to a few hubs (chains) emerging to host value generators. This was a fair exchange - you rent very expensive infrastructure in order to service your customers.
+
+**Monopolistic/ Hub and Spoke model (similar to wired telecommunication, switchboards, and home telephones):**
+
+This was the first major shift in the mental model for solving interoperability that we have seen. Rather than having isolated systems connecting individual chains to each other (in a form of lanes), we’ve seen the emergence of interoperability networks/protocols. Each new chain connected to the Hub (the interop network) would get automatically connected to all of the existing networks that have been connected.
+
+This is a direct response to the fact that L2s and new chains have started to emerge more frequently (once every couple of months) as the costs associated with deploying a ledger (chain) have begun to decline. Users and liquidity started to fragment across these ledgers, and interoperability protocols were there to try and unite them.
+
+**Monopolistic/ permissionless deployment (similar to cell-towers):**
+
+We see some implementations of cell-tower-like solutions where permissionless chain onboarding is possible, but just like with the cell-towers, these systems still rely on rent-seeking models and infrastructure that extracts value from those who generate and consume it.
+
+***So what is the problem?:***
+
+All of these solutions in telecommunication use access to the infrastructure as the product, charging rents to those who use it. Most of you will remember having to pay per SMS or per minute of talking, and increasing rents being charged for calling long distance. Every provider wanted to own every step of the process and tried to build a moat by charging additional fees on 'out-of-network calling', essentially vendor-locking their users.
+
+They wanted to control communication in its entirety, and at a certain point in time, it seemed that one winner would emerge and do so. That is, until the internet and data changed everything.
+
+***Where are we heading?***
+
+What the internet (TCP/IP protocols) has done is establish a neutral, non-discriminatory system that allows anyone to connect with anyone/anything regardless of the service provider. Telcos were forced to adapt to this new reality where they could only compete on coverage and price. This has forced them to compete on merit without the option of creating a provider-centric moat. This fierce competition has led to a much better consumer offering. Prices dropped, coverage is pretty much universal, and everyone is connected. Users got the power to switch and leave with no drawbacks, and this has completely changed the industry.
+
+This has not only resulted in people being able to chat and call each other anywhere in the world, but it has also allowed for an entire industry of internet-connected apps to emerge. Almost every app that we rely on every day is connected to the internet, and none of this would be possible without connectivity and distribution becoming a non-discriminatory commodity.
+
+I believe that interoperability is heading in the same direction. Moreover, I believe that Web 3 as a whole will not be able to flourish unless interoperability evolves into a neutral, non-discriminatory, trustless, permissionless, and open system.
+
+In the world where running your own ledger has become a low-cost commodity and the price keeps dropping (you can spin up a rollup for as little as $3,000 a month via RAAS provider, in 3 years this will be $300, in 5 it will be $30) - interoperability has to change and adapt.
+
+>**“There is no place for kings in interoperability.”**
+
+---
+
+## 🤝 Follow us for upcoming updates on Concero Socials :
+
+[Concero.io](https://concero.io) | [Concero Blog](https://blog.concero.io) | [Twitter](https://x.com/concero_io) | [Discord](https://discord.com/invite/lanca) | [Telegram](https://t.me/concero_news)
